@@ -28,3 +28,21 @@
 3. 移除不重要参数
 4. 微调剪枝后模型
 
+## 实现示例
+
+```python
+# 剪枝代码示例
+import tensorflow as tf
+from tensorflow_model_optimization.sparsity import keras as sparsity
+
+# 创建剪枝模型
+pruning_params = {
+    'pruning_schedule': sparsity.PolynomialDecay(
+        initial_sparsity=0.0,
+        final_sparsity=0.5,
+        begin_step=1000,
+        end_step=2000,
+        frequency=100
+    )
+}
+```
